@@ -26,8 +26,9 @@ pnpm preview
 - Build command: `pnpm build`
 - Build output directory: `dist`
 - Environment variable: `NODE_VERSION=22`
+- For Cloudflare Pages Git deployments, leave the deploy command unset so Pages publishes `dist` after the build. If using a custom deploy command, set it to `pnpm deploy:pages` (equivalent to `wrangler pages deploy dist`). Do not use `wrangler deploy`, which deploys Workers and is incompatible with this static Pages project.
 
-Для ручного деплоя используйте `pnpm deploy`. Перед запуском настройте домен `arsenal-7.com`, HTTPS, редиректы www и Cloudflare Web Analytics. Файл `public/_headers` закрывает `*.pages.dev` от индексации.
+Для ручного деплоя используйте `pnpm deploy` (сборка и публикация) либо `pnpm deploy:pages` (если `dist` уже собран). Перед запуском настройте домен `arsenal-7.com`, HTTPS, редиректы www и Cloudflare Web Analytics. Файл `public/_headers` закрывает `*.pages.dev` от индексации.
 
 ## Страницы и языки
 
