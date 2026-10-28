@@ -3,4 +3,30 @@ import { routes, ui, TELEGRAM_URL, type Locale } from '../consts';
 const { locale = 'ru' } = Astro.props as { locale?: Locale };
 const t = ui[locale];
 ---
-<footer class="site-footer"><div class="wrap footer-inner"><a class="brand" href={routes.home[locale]}>ARSENAL <span>7</span></a><nav aria-label={locale === 'ru' ? 'Дополнительная навигация' : 'Додаткова навігація'}>{t.nav.map((label, i) => <a href={[routes.gear[locale], routes.tools[locale], routes.guides[locale], routes.about[locale]][i]}>{label}</a>)}<a href={routes.privacy[locale]}>{t.privacy}</a>{TELEGRAM_URL && <a href={TELEGRAM_URL}>{t.telegram}</a>}</nav><small>© {new Date().getFullYear()} Arsenal 7</small></div></footer>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <a class="brand" href={routes.home[locale]}>
+      ARSENAL <span>7</span>
+    </a>
+    <nav aria-label={locale === 'ru' ? 'Дополнительная навигация' : 'Додаткова навігація'}>
+      {t.nav.map((label, i) => (
+        <a
+          href={
+            [
+              routes.gear[locale],
+              routes.tools[locale],
+              routes.guides[locale],
+              routes.about[locale],
+            ][i]
+          }
+        >
+          {label}
+        </a>
+      ))}
+      <a href={routes.privacy[locale]}>{t.privacy}</a>
+      {TELEGRAM_URL && <a href={TELEGRAM_URL}>{t.telegram}</a>}
+    </nav>
+    <small>© {new Date().getFullYear()} Arsenal 7</small>
+  </div>
+</footer>

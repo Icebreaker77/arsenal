@@ -3,10 +3,76 @@ import SiteLayout from '../layouts/SiteLayout.astro';
 import { pageText as p, routes, TELEGRAM_URL } from '../consts';
 const t = p.ru;
 ---
+
 <SiteLayout title={t.homeTitle} description={t.homeDescription} locale="ru" routeKey="home" home>
-  <section class="hero"><p class="eyebrow">НЕЗАВИСИМЫЙ ПРАКТИЧЕСКИЙ ГИД</p><h1>{t.homeH1}</h1><p class="lead">{t.intro}</p><div class="actions"><a class="button" href={routes.gear.ru}>Снаряжение</a><a class="button button-outline" href={routes.tools.ru}>Инструмент</a></div></section>
-  <section class="section"><div class="section-heading"><p class="eyebrow">ДВА НАПРАВЛЕНИЯ</p><h2>Выбирайте под свою задачу</h2></div><div class="cards"><a class="card" href={routes.gear.ru}><span class="card-number">01 / СНАРЯЖЕНИЕ</span><h3>Для похода, рыбалки и спорта</h3><p>Что взять в первую очередь, как выбрать размер и материал, где можно сэкономить.</p><span class="card-link">Перейти в раздел →</span></a><a class="card" href={routes.tools.ru}><span class="card-number">02 / ИНСТРУМЕНТ</span><h3>Для дома, мастерской и авто</h3><p>Ручной и электроинструмент, расходники и автомобильный набор: с чего начать.</p><span class="card-link">Перейти в раздел →</span></a></div></section>
-  <section class="section split"><div><p class="eyebrow">НАШ ПОДХОД</p><h2>Сначала задача. Потом покупка.</h2><p>Мы начинаем с условий использования, сравниваем характеристики, гарантию и стоимость владения. И прямо объясняем, где доплата оправдана.</p><a href={routes.about.ru}>Подробнее о подходе →</a></div><ol class="steps"><li>Уточняем, для чего и в каких условиях нужна вещь.</li><li>Сопоставляем характеристики с бюджетом и сроком службы.</li><li>Отделяем полезные функции от тех, за которые не стоит платить.</li></ol></section>
-  <section class="section audience"><p class="eyebrow">ДЛЯ КОГО ЭТОТ САЙТ</p><h2>Меньше случайных покупок</h2><p>Для тех, кто собирается в поход или на рыбалку, начинает заниматься спортом, обустраивает мастерскую или выбирает инструмент для машины. На сайте нет магазина: наша задача — помочь выбрать.</p><a href={routes.guides.ru}>Смотреть гайды →</a></section>
-  {TELEGRAM_URL && <section class="subscribe"><div><h2>Новые гайды в Telegram</h2><p>Короткие анонсы разборов и сравнений, без спама.</p></div><a class="button" href={TELEGRAM_URL}>Подписаться</a></section>}
+  <section class="hero">
+    <p class="eyebrow">НЕЗАВИСИМЫЙ ПРАКТИЧЕСКИЙ ГИД</p>
+    <h1>{t.homeH1}</h1>
+    <p class="lead">{t.intro}</p>
+    <div class="actions">
+      <a class="button" href={routes.gear.ru}>
+        Снаряжение
+      </a>
+      <a class="button button-outline" href={routes.tools.ru}>
+        Инструмент
+      </a>
+    </div>
+  </section>
+  <section class="section">
+    <div class="section-heading">
+      <p class="eyebrow">ДВА НАПРАВЛЕНИЯ</p>
+      <h2>Выбирайте под свою задачу</h2>
+    </div>
+    <div class="cards">
+      <a class="card" href={routes.gear.ru}>
+        <span class="card-number">01 / СНАРЯЖЕНИЕ</span>
+        <h3>Для похода, рыбалки и спорта</h3>
+        <p>Что взять в первую очередь, как выбрать размер и материал, где можно сэкономить.</p>
+        <span class="card-link">Перейти в раздел →</span>
+      </a>
+      <a class="card" href={routes.tools.ru}>
+        <span class="card-number">02 / ИНСТРУМЕНТ</span>
+        <h3>Для дома, мастерской и авто</h3>
+        <p>Ручной и электроинструмент, расходники и автомобильный набор: с чего начать.</p>
+        <span class="card-link">Перейти в раздел →</span>
+      </a>
+    </div>
+  </section>
+  <section class="section split">
+    <div>
+      <p class="eyebrow">НАШ ПОДХОД</p>
+      <h2>Сначала задача. Потом покупка.</h2>
+      <p>
+        Мы начинаем с условий использования, сравниваем характеристики, гарантию и стоимость
+        владения. И прямо объясняем, где доплата оправдана.
+      </p>
+      <a href={routes.about.ru}>Подробнее о подходе →</a>
+    </div>
+    <ol class="steps">
+      <li>Уточняем, для чего и в каких условиях нужна вещь.</li>
+      <li>Сопоставляем характеристики с бюджетом и сроком службы.</li>
+      <li>Отделяем полезные функции от тех, за которые не стоит платить.</li>
+    </ol>
+  </section>
+  <section class="section audience">
+    <p class="eyebrow">ДЛЯ КОГО ЭТОТ САЙТ</p>
+    <h2>Меньше случайных покупок</h2>
+    <p>
+      Для тех, кто собирается в поход или на рыбалку, начинает заниматься спортом, обустраивает
+      мастерскую или выбирает инструмент для машины. На сайте нет магазина: наша задача — помочь
+      выбрать.
+    </p>
+    <a href={routes.guides.ru}>Смотреть гайды →</a>
+  </section>
+  {TELEGRAM_URL && (
+    <section class="subscribe">
+      <div>
+        <h2>Новые гайды в Telegram</h2>
+        <p>Короткие анонсы разборов и сравнений, без спама.</p>
+      </div>
+      <a class="button" href={TELEGRAM_URL}>
+        Подписаться
+      </a>
+    </section>
+  )}
 </SiteLayout>

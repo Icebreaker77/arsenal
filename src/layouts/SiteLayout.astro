@@ -3,7 +3,48 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { routes, ui, type Locale } from '../consts';
-interface Props { title: string; description: string; locale?: Locale; routeKey?: keyof typeof routes; noindex?: boolean; home?: boolean; }
-const { title, description, locale = 'ru', routeKey = 'home', noindex = false, home = false } = Astro.props;
+interface Props {
+  title: string;
+  description: string;
+  locale?: Locale;
+  routeKey?: keyof typeof routes;
+  noindex?: boolean;
+  home?: boolean;
+}
+const {
+  title,
+  description,
+  locale = 'ru',
+  routeKey = 'home',
+  noindex = false,
+  home = false,
+} = Astro.props;
 ---
-<!doctype html><html lang={locale}><head><BaseHead title={title} description={description} locale={locale} routeKey={routeKey} noindex={noindex} home={home} /></head><body><Header locale={locale} routeKey={routeKey} />{!home && <nav class="breadcrumbs wrap" aria-label={ui[locale].breadcrumb}><a href={routes.home[locale]}>{ui[locale].home}</a><span aria-hidden="true">›</span><span>{title.split('|')[0].trim()}</span></nav>}<main class="wrap"><slot /></main><Footer locale={locale} /></body></html>
+
+<!doctype html>
+<html lang={locale}>
+  <head>
+    <BaseHead
+      title={title}
+      description={description}
+      locale={locale}
+      routeKey={routeKey}
+      noindex={noindex}
+      home={home}
+    />
+  </head>
+  <body>
+    <Header locale={locale} routeKey={routeKey} />
+    {!home && (
+      <nav class="breadcrumbs wrap" aria-label={ui[locale].breadcrumb}>
+        <a href={routes.home[locale]}>{ui[locale].home}</a>
+        <span aria-hidden="true">›</span>
+        <span>{title.split('|')[0].trim()}</span>
+      </nav>
+    )}
+    <main class="wrap">
+      <slot />
+    </main>
+    <Footer locale={locale} />
+  </body>
+</html>

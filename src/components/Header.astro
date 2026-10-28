@@ -1,11 +1,41 @@
 ---
 import { SITE_TITLE, routes, ui, type Locale } from '../consts';
-const { locale = 'ru', routeKey = 'home' } = Astro.props as { locale?: Locale; routeKey?: keyof typeof routes };
+const { locale = 'ru', routeKey = 'home' } = Astro.props as {
+  locale?: Locale;
+  routeKey?: keyof typeof routes;
+};
 const labels = ui[locale];
-const nav = [routes.gear[locale], routes.tools[locale], routes.guides[locale], routes.about[locale]];
+const nav = [
+  routes.gear[locale],
+  routes.tools[locale],
+  routes.guides[locale],
+  routes.about[locale],
+];
 ---
-<header class="site-header"><nav class="nav wrap" aria-label={locale === 'ru' ? 'Основная навигация' : 'Основна навігація'}>
-  <a class="brand" href={routes.home[locale]} aria-label={SITE_TITLE}>ARSENAL <span>7</span></a>
-  <details class="mobile-menu"><summary aria-label={locale === 'ru' ? 'Открыть меню' : 'Відкрити меню'}>Меню</summary><div class="nav-links">{labels.nav.map((label, i) => <a href={nav[i]}>{label}</a>)}<a class="lang" href={routes[routeKey][locale === 'ru' ? 'uk' : 'ru']}>{locale === 'ru' ? 'RU' : 'RU'} | {locale === 'ru' ? 'UA' : 'UA'}</a></div></details>
-  <div class="desktop-links">{labels.nav.map((label, i) => <a href={nav[i]}>{label}</a>)}<a class="lang" href={routes[routeKey][locale === 'ru' ? 'uk' : 'ru']}>{locale === 'ru' ? 'RU | UA' : 'UA | RU'}</a></div>
-</nav></header>
+
+<header class="site-header">
+  <nav class="nav wrap" aria-label={locale === 'ru' ? 'Основная навигация' : 'Основна навігація'}>
+    <a class="brand" href={routes.home[locale]} aria-label={SITE_TITLE}>
+      ARSENAL <span>7</span>
+    </a>
+    <details class="mobile-menu">
+      <summary aria-label={locale === 'ru' ? 'Открыть меню' : 'Відкрити меню'}>Меню</summary>
+      <div class="nav-links">
+        {labels.nav.map((label, i) => (
+          <a href={nav[i]}>{label}</a>
+        ))}
+        <a class="lang" href={routes[routeKey][locale === 'ru' ? 'uk' : 'ru']}>
+          {locale === 'ru' ? 'RU' : 'RU'} | {locale === 'ru' ? 'UA' : 'UA'}
+        </a>
+      </div>
+    </details>
+    <div class="desktop-links">
+      {labels.nav.map((label, i) => (
+        <a href={nav[i]}>{label}</a>
+      ))}
+      <a class="lang" href={routes[routeKey][locale === 'ru' ? 'uk' : 'ru']}>
+        {locale === 'ru' ? 'RU | UA' : 'UA | RU'}
+      </a>
+    </div>
+  </nav>
+</header>

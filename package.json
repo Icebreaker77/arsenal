@@ -9,6 +9,7 @@
 		"dev": "astro dev --background",
 		"build": "astro build",
 		"lint": "eslint \"src/**/*.{js,mjs,ts,astro}\" astro.config.mjs eslint.config.mjs",
+		"format:astro": "prettier --write \"src/**/*.astro\"",
 		"preview": "astro build && wrangler pages dev dist",
 		"astro": "astro",
 		"generate-types": "wrangler types",
@@ -29,6 +30,8 @@
 		"@types/node": "^26.6.5",
 		"eslint": "^10.13.0",
 		"eslint-plugin-astro": "^3.2.1",
+		"prettier": "^3.9.10",
+		"prettier-plugin-astro": "^1.1.2",
 		"typescript-eslint": "^8.72.1",
 		"wrangler": "^4.153.0"
 	}

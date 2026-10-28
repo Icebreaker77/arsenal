@@ -1,4 +1,34 @@
 ---
-import SiteLayout from '../../layouts/SiteLayout.astro'; import { pageText as p, routes } from '../../consts'; const t=p.ru;
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import { pageText as p, routes } from '../../consts';
+const t = p.ru;
 ---
-<SiteLayout title={t.guidesTitle} description={t.guidesDescription} locale="ru" routeKey="guides" noindex><section class="prose"><p class="eyebrow">БИБЛИОТЕКА МАТЕРИАЛОВ</p><h1>Гайды по снаряжению и инструменту</h1><p class="lead">Здесь будут практические разборы, сравнения и чек-листы. Мы готовим первые материалы и публикуем их после проверки источников и редакторской вычитки.</p><div class="cards"><a class="card" href={routes.gear.ru}><span class="card-number">01 / СНАРЯЖЕНИЕ</span><h2>Туризм, рыбалка и спорт</h2><p>Выбор вещей под задачу, условия и бюджет.</p></a><a class="card" href={routes.tools.ru}><span class="card-number">02 / ИНСТРУМЕНТ</span><h2>Дом, мастерская и авто</h2><p>Базовые наборы и критерии выбора.</p></a></div></section></SiteLayout>
+
+<SiteLayout
+  title={t.guidesTitle}
+  description={t.guidesDescription}
+  locale="ru"
+  routeKey="guides"
+  noindex
+>
+  <section class="prose">
+    <p class="eyebrow">БИБЛИОТЕКА МАТЕРИАЛОВ</p>
+    <h1>Гайды по снаряжению и инструменту</h1>
+    <p class="lead">
+      Здесь будут практические разборы, сравнения и чек-листы. Мы готовим первые материалы и
+      публикуем их после проверки источников и редакторской вычитки.
+    </p>
+    <div class="cards">
+      <a class="card" href={routes.gear.ru}>
+        <span class="card-number">01 / СНАРЯЖЕНИЕ</span>
+        <h2>Туризм, рыбалка и спорт</h2>
+        <p>Выбор вещей под задачу, условия и бюджет.</p>
+      </a>
+      <a class="card" href={routes.tools.ru}>
+        <span class="card-number">02 / ИНСТРУМЕНТ</span>
+        <h2>Дом, мастерская и авто</h2>
+        <p>Базовые наборы и критерии выбора.</p>
+      </a>
+    </div>
+  </section>
+</SiteLayout>
