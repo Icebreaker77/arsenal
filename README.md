@@ -1,63 +1,44 @@
-# Astro Starter Kit: Blog
+# Arsenal 7
+
+Двуязычный статический сайт-хаб о снаряжении и инструменте на Astro. Русские страницы размещаются в корне, украинские — в `/ua/`.
+
+## Локальная разработка
+
+Требуется Node.js 22 и pnpm.
 
 ```sh
-pnpm create astro@latest -- --template blog
+pnpm install
+pnpm dev       # astro dev --background
+astro dev status
+astro dev logs
+astro dev stop
+pnpm build
+pnpm preview
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Готовые статические файлы появляются в `dist/`.
 
-Features:
+## Деплой на Cloudflare Pages
 
-- ✅ Minimal styling (make it your own!)
-- ✅ 100/100 Lighthouse performance
-- ✅ SEO-friendly with canonical URLs and Open Graph data
-- ✅ Sitemap support
-- ✅ RSS Feed support
-- ✅ Markdown & MDX support
+Подключите Git-репозиторий к Cloudflare Pages и задайте:
 
-## 🚀 Project Structure
+- Production branch: `main`
+- Build command: `pnpm build`
+- Build output directory: `dist`
+- Environment variable: `NODE_VERSION=22`
 
-Inside of your Astro project, you'll see the following folders and files:
+Для ручного деплоя используйте `pnpm deploy`. Перед запуском настройте домен `arsenal-7.com`, HTTPS, редиректы www и Cloudflare Web Analytics. Файл `public/_headers` закрывает `*.pages.dev` от индексации.
 
-```text
-├── public/
-├── src/
-│   ├── assets/
-│   ├── components/
-│   ├── content/
-│   ├── layouts/
-│   └── pages/
-├── astro.config.mjs
-├── README.md
-├── package.json
-└── tsconfig.json
-```
+## Страницы и языки
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+Главная: `/` и `/ua/`. Снаряжение: `/snaryazhenie/` и `/ua/sporyadzhennya/`. Инструмент: `/instrument/` и `/ua/instrument/`. Гайды: `/guides/` и `/ua/guides/`. О проекте: `/about/` и `/ua/about/`. Политика: `/privacy/` и `/ua/privacy/`.
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+Тексты главной, разделов и SEO-метаданные находятся в `src/pages/` и `src/consts.ts`. Парные URL для hreflang и переключателя языка собраны в `routes` в `src/consts.ts`. Служебные страницы политики исключены из индекса; страницы гайдов откроются для индексации после публикации достаточного количества статей.
 
-The `src/content/` directory contains "collections" of related Markdown and MDX documents. Use `getCollection()` to retrieve posts from `src/content/blog/`, and type-check your frontmatter using an optional schema. See [Astro's Content Collections docs](https://docs.astro.build/en/guides/content-collections/) to learn more.
+## Публикация гайдов
 
-Any static assets, like images, can be placed in the `public/` directory.
+Статьи пока не входят в первый релиз. При добавлении статей создайте для каждого языка отдельный Markdown-файл со своим латинским URL-slug, добавьте его маршрут в `src/pages/guides/` и `src/pages/ua/guides/`, обновите листинг и sitemap-фильтр в `astro.config.mjs`. Публикуйте не менее трёх вычитанных материалов на язык до включения листинга в индекс.
 
-## 🧞 Commands
+## Перед релизом
 
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Check out [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
-
-## Credit
-
-This theme is based off of the lovely [Bear Blog](https://github.com/HermanMartinus/bearblog/).
+Замените временную ссылку `TELEGRAM_URL` в `src/consts.ts` настоящим каналом; согласуйте редакционные сведения и контакт автора для страницы «О проекте»; проверьте текст политики по фактически включённым сервисам. Настройте Google Search Console, Bing Webmaster Tools, Cloudflare Web Analytics и IndexNow, затем проверьте доменные редиректы и Cloudflare AI Crawl Control согласно `guide.md`.

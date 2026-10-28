@@ -14,6 +14,7 @@ Full documentation: https://docs.astro.build
 
 Consult these guides before working on related tasks:
 
+- [Gitlab Pages configuration](https://developers.cloudflare.com/pages/framework-guides/deploy-an-astro-site/)
 - [Adding pages, dynamic routes, or middleware](https://docs.astro.build/en/guides/routing/)
 - [Working with Astro components](https://docs.astro.build/en/basics/astro-components/)
 - [Using React, Vue, Svelte, or other framework components](https://docs.astro.build/en/guides/framework-components/)

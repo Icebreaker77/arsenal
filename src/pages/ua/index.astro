@@ -1,0 +1,12 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import { pageText as p, routes, TELEGRAM_URL } from '../../consts';
+const t = p.uk;
+---
+<SiteLayout title={t.homeTitle} description={t.homeDescription} locale="uk" routeKey="home" home>
+  <section class="hero"><p class="eyebrow">НЕЗАЛЕЖНИЙ ПРАКТИЧНИЙ ГІД</p><h1>{t.homeH1}</h1><p class="lead">{t.intro}</p><div class="actions"><a class="button" href={routes.gear.uk}>Спорядження</a><a class="button button-outline" href={routes.tools.uk}>Інструмент</a></div></section>
+  <section class="section"><div class="section-heading"><p class="eyebrow">ДВА НАПРЯМИ</p><h2>Обирайте під свою задачу</h2></div><div class="cards"><a class="card" href={routes.gear.uk}><span class="card-number">01 / СПОРЯДЖЕННЯ</span><h3>Для походу, риболовлі та спорту</h3><p>Що взяти насамперед, як обрати розмір і матеріал, де можна заощадити.</p><span class="card-link">Перейти до розділу →</span></a><a class="card" href={routes.tools.uk}><span class="card-number">02 / ІНСТРУМЕНТ</span><h3>Для дому, майстерні та авто</h3><p>Ручний та електроінструмент, витратні матеріали й автомобільний набір: з чого почати.</p><span class="card-link">Перейти до розділу →</span></a></div></section>
+  <section class="section split"><div><p class="eyebrow">НАШ ПІДХІД</p><h2>Спочатку задача. Потім покупка.</h2><p>Ми починаємо з умов використання, порівнюємо характеристики, гарантію та вартість володіння. І прямо пояснюємо, де доплата виправдана.</p><a href={routes.about.uk}>Докладніше про підхід →</a></div><ol class="steps"><li>З'ясовуємо, для чого і в яких умовах потрібна річ.</li><li>Зіставляємо характеристики з бюджетом і терміном служби.</li><li>Відокремлюємо корисні функції від тих, за які не варто платити.</li></ol></section>
+  <section class="section audience"><p class="eyebrow">ДЛЯ КОГО ЦЕЙ САЙТ</p><h2>Менше випадкових покупок</h2><p>Для тих, хто збирається в похід чи на риболовлю, починає займатися спортом, облаштовує майстерню або обирає інструмент для авто. На сайті немає магазину: наше завдання — допомогти обрати.</p><a href={routes.guides.uk}>Переглянути гайди →</a></section>
+  {TELEGRAM_URL && <section class="subscribe"><div><h2>Нові гайди в Telegram</h2><p>Короткі анонси розборів і порівнянь, без спаму.</p></div><a class="button" href={TELEGRAM_URL}>Підписатися</a></section>}
+</SiteLayout>
