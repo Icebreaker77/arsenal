@@ -7,10 +7,6 @@
 	"name": "arsenal",
 	"compatibility_date": "2026-10-19",
 	"pages_build_output_dir": "./dist",
-	"previews": {},
-	"observability": {
-		"enabled": true
-	},
 	"upload_source_maps": true
 	/**
 	 * Smart Placement
