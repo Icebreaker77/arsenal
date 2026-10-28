@@ -1,0 +1,4 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro'; import { routes } from '../consts';
+---
+<SiteLayout title="Страница не найдена | Arsenal 7" description="Запрошенная страница не найдена." locale="ru" noindex><section class="prose"><h1>Страница не найдена</h1><p>Возможно, адрес изменился или в нём опечатка. Перейдите в разделы: <a href={routes.gear.ru}>Снаряжение</a>, <a href={routes.tools.ru}>Инструмент</a>, <a href={routes.guides.ru}>Гайды</a> или вернитесь <a href={routes.home.ru}>на главную</a>.</p><hr/><h2 lang="uk">Сторінку не знайдено</h2><p lang="uk">Можливо, адресу змінено або в ньому помилка. Перейдіть до розділів: <a href={routes.gear.uk}>Спорядження</a>, <a href={routes.tools.uk}>Інструмент</a>, <a href={routes.guides.uk}>Гайди</a> або поверніться <a href={routes.home.uk}>на головну</a>.</p></section></SiteLayout>

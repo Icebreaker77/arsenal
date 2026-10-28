@@ -1,0 +1,4 @@
+---
+import SiteLayout from '../../../layouts/SiteLayout.astro'; import { pageText as p, routes } from '../../../consts'; const t=p.uk;
+---
+<SiteLayout title={t.guidesTitle} description={t.guidesDescription} locale="uk" routeKey="guides" noindex><section class="prose"><p class="eyebrow">БІБЛІОТЕКА МАТЕРІАЛІВ</p><h1>Гайди зі спорядження та інструменту</h1><p class="lead">Тут будуть практичні розбори, порівняння й чек-листи. Ми готуємо перші матеріали та публікуємо їх після перевірки джерел і редакторського вичитування.</p><div class="cards"><a class="card" href={routes.gear.uk}><span class="card-number">01 / СПОРЯДЖЕННЯ</span><h2>Туризм, риболовля та спорт</h2><p>Вибір речей під задачу, умови й бюджет.</p></a><a class="card" href={routes.tools.uk}><span class="card-number">02 / ІНСТРУМЕНТ</span><h2>Дім, майстерня та авто</h2><p>Базові набори й критерії вибору.</p></a></div></section></SiteLayout>
