@@ -12,6 +12,7 @@ pnpm dev       # astro dev --background
 astro dev status
 astro dev logs
 astro dev stop
+pnpm format:astro
 pnpm lint
 pnpm build
 pnpm preview

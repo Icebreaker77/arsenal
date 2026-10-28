@@ -2,24 +2,84 @@
 import '../styles/global.css';
 import interCyrillic from '@fontsource-variable/inter/files/inter-cyrillic-wght-normal.woff2?url';
 import { SITE_TITLE, SITE_URL, TELEGRAM_URL, routes, type Locale } from '../consts';
-interface Props { title: string; description: string; locale: Locale; routeKey?: keyof typeof routes; noindex?: boolean; home?: boolean; }
+interface Props {
+  title: string;
+  description: string;
+  locale: Locale;
+  routeKey?: keyof typeof routes;
+  noindex?: boolean;
+  home?: boolean;
+}
 const { title, description, locale, routeKey, noindex = false, home = false } = Astro.props;
 const canonical = new URL(Astro.url.pathname, SITE_URL).href;
 const pair = routeKey ? routes[routeKey] : undefined;
-const crumbs = Astro.url.pathname === '/' || Astro.url.pathname === '/ua/' ? [] : [{ name: locale === 'ru' ? 'Главная' : 'Головна', url: new URL(locale === 'ru' ? '/' : '/ua/', SITE_URL).href }, { name: title.split('|')[0].trim(), url: canonical }];
-const jsonLd = home ? { '@context': 'https://schema.org', '@graph': [
-  { '@type': 'Organization', '@id': `${SITE_URL}/#org`, name: SITE_TITLE, url: `${SITE_URL}/`, logo: `${SITE_URL}/logo-512.png`, ...(TELEGRAM_URL ? { sameAs: [TELEGRAM_URL] } : {}) },
-  { '@type': 'WebSite', '@id': `${SITE_URL}/#website`, name: SITE_TITLE, url: canonical, inLanguage: locale, publisher: { '@id': `${SITE_URL}/#org` } },
-]} : { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: crumbs.map((c, i) => ({ '@type': 'ListItem', position: i + 1, name: c.name, item: c.url })) };
+const crumbs =
+  Astro.url.pathname === '/' || Astro.url.pathname === '/ua/'
+    ? []
+    : [
+        {
+          name: locale === 'ru' ? 'Главная' : 'Головна',
+          url: new URL(locale === 'ru' ? '/' : '/ua/', SITE_URL).href,
+        },
+        { name: title.split('|')[0].trim(), url: canonical },
+      ];
+const jsonLd = home
+  ? {
+      '@context': 'https://schema.org',
+      '@graph': [
+        {
+          '@type': 'Organization',
+          '@id': `${SITE_URL}/#org`,
+          name: SITE_TITLE,
+          url: `${SITE_URL}/`,
+          logo: `${SITE_URL}/logo-512.png`,
+          ...(TELEGRAM_URL ? { sameAs: [TELEGRAM_URL] } : {}),
+        },
+        {
+          '@type': 'WebSite',
+          '@id': `${SITE_URL}/#website`,
+          name: SITE_TITLE,
+          url: canonical,
+          inLanguage: locale,
+          publisher: { '@id': `${SITE_URL}/#org` },
+        },
+      ],
+    }
+  : {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: crumbs.map((c, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        name: c.name,
+        item: c.url,
+      })),
+    };
 ---
+
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>{title}</title><meta name="description" content={description} />
+<title>{title}</title>
+<meta name="description" content={description} />
 <meta name="robots" content={noindex ? 'noindex,follow' : 'index,follow'} />
 <link rel="canonical" href={canonical} />
-{!noindex && pair && <><link rel="alternate" hreflang="ru" href={new URL(pair.ru, SITE_URL)} /><link rel="alternate" hreflang="uk" href={new URL(pair.uk, SITE_URL)} /><link rel="alternate" hreflang="x-default" href={new URL(pair.ru, SITE_URL)} /></>}
-<link rel="icon" href="/favicon.svg" type="image/svg+xml" /><link rel="sitemap" href="/sitemap-index.xml" />
-<meta property="og:type" content="website" /><meta property="og:site_name" content={SITE_TITLE} /><meta property="og:title" content={title} /><meta property="og:description" content={description} /><meta property="og:url" content={canonical} /><meta property="og:image" content={`${SITE_URL}/og-default.png`} /><meta property="og:locale" content={locale === 'ru' ? 'ru_RU' : 'uk_UA'} />
-<meta name="twitter:card" content="summary_large_image" /><meta name="theme-color" content="#3F4A2E" />
+{!noindex && pair && (
+  <>
+    <link rel="alternate" hreflang="ru" href={new URL(pair.ru, SITE_URL)} />
+    <link rel="alternate" hreflang="uk" href={new URL(pair.uk, SITE_URL)} />
+    <link rel="alternate" hreflang="x-default" href={new URL(pair.ru, SITE_URL)} />
+  </>
+)}
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="sitemap" href="/sitemap-index.xml" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content={SITE_TITLE} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={`${SITE_URL}/og-default.png`} />
+<meta property="og:locale" content={locale === 'ru' ? 'ru_RU' : 'uk_UA'} />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="theme-color" content="#3F4A2E" />
 {home && <link rel="preload" href={interCyrillic} as="font" type="font/woff2" crossorigin />}
 <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
