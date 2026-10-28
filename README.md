@@ -12,6 +12,7 @@ pnpm dev       # astro dev --background
 astro dev status
 astro dev logs
 astro dev stop
+pnpm lint
 pnpm build
 pnpm preview
 ```
@@ -26,8 +27,10 @@ pnpm preview
 - Build command: `pnpm build`
 - Build output directory: `dist`
 - Environment variable: `NODE_VERSION=22`
+- For Cloudflare Pages Git deployments, leave the deploy command unset so Pages publishes `dist` after the build. If using a custom deploy command, set it to `pnpm deploy:pages` (equivalent to `wrangler pages deploy dist`). Do not use `wrangler deploy`, which deploys Workers and is incompatible with this static Pages project.
+- If the project is currently connected under **Workers Builds** (the log says `Executing user deploy command`), set Build command to `pnpm build`, Deploy command to `pnpm deploy:pages`, and disable **Enable Preview Builds** under Settings → Build → Branch control. The default Preview command `npx wrangler preview` is for Workers and expects a Worker `previews` configuration; this static Pages project should not run it.
 
-Для ручного деплоя используйте `pnpm deploy`. Перед запуском настройте домен `arsenal-7.com`, HTTPS, редиректы www и Cloudflare Web Analytics. Файл `public/_headers` закрывает `*.pages.dev` от индексации.
+Для ручного деплоя используйте `pnpm deploy` (сборка и публикация) либо `pnpm deploy:pages` (если `dist` уже собран). Перед запуском настройте домен `arsenal-7.com`, HTTPS, редиректы www и Cloudflare Web Analytics. Файл `public/_headers` закрывает `*.pages.dev` от индексации.
 
 ## Страницы и языки
 
