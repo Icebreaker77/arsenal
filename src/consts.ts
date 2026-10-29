@@ -4,8 +4,8 @@ export const TELEGRAM_URL = ''; // Set the project's public channel before launc
 
 export const routes = {
   home: { ru: '/', uk: '/ua/' },
-  gear: { ru: '/snaryazhenie/', uk: '/ua/sporyadzhennya/' },
   tools: { ru: '/instrument/', uk: '/ua/instrument/' },
+  gear: { ru: '/snaryazhenie/', uk: '/ua/sporyadzhennya/' },
   guides: { ru: '/guides/', uk: '/ua/guides/' },
   about: { ru: '/about/', uk: '/ua/about/' },
   privacy: { ru: '/privacy/', uk: '/ua/privacy/' },
