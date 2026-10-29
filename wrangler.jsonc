@@ -7,6 +7,10 @@
 	"name": "arsenal",
 	"compatibility_date": "2026-10-19",
 	"pages_build_output_dir": "./dist",
+	"assets": {
+		"directory": "./dist/client",
+		"binding": "STATIC_ASSETS"
+	},
 	"upload_source_maps": true
 	/**
 	 * Smart Placement
