@@ -81,5 +81,14 @@ const jsonLd = home
 <meta property="og:locale" content={locale === 'ru' ? 'ru_RU' : 'uk_UA'} />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="theme-color" content="#3F4A2E" />
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TFVEYQC0WX"></script>
+<script is:inline>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    window.dataLayer.push(arguments);
+  }
+  gtag('js', new Date());
+  gtag('config', 'G-TFVEYQC0WX');
+</script>
 {home && <link rel="preload" href={interCyrillic} as="font" type="font/woff2" crossorigin />}
 <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
