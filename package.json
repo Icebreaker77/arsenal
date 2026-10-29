@@ -11,11 +11,10 @@
 		"preview": "astro build && wrangler pages dev",
 		"astro": "astro",
 		"generate-types": "wrangler types",
-		"deploy": "astro build && wrangler pages deploy",
+		"deploy": "astro build && wrangler pages deploy --branch=main",
 		"cf-typegen": "wrangler types",
 		"lint": "eslint \"src/**/*.{js,mjs,ts,astro}\" astro.config.mjs eslint.config.mjs",
 		"format:astro": "prettier --write \"src/**/*.astro\""
-
 	},
 	"dependencies": {
 		"@astrojs/cloudflare": "^14.4.2",
